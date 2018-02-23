@@ -1,0 +1,54 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %} Delay prediction {% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container">
+  <div class="jumbotron" style="padding-top: 20px; padding-bottom: 0px; ">
+    <center><h2>CS- 5593 Data Mining - Group Project </h2><br>
+    <h3>Group Members</h3>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>1.Sarvesh Prattipati</h3>
+        <h3>3.Sharath Mudhigonda</h3>
+      </div>
+      <div class="col-lg-6">
+        <h3>2.Ram Sharan Tummala</h3>
+        <h3>4. Anand Sai Bodicharla</h3>
+      </div>
+    </div>
+</center>
+ </div>
+</div>
+
+
+<div class="container">
+    <center><h1>Flight delay prediction</h1></center>
+    <center><h2> Do you want to upload training set </h2></center>
+    <form action={{ url_for('upload') }}>
+        <div class="row">
+            <div class="col-lg-3"></div>
+             <div class="col-lg-5">
+            <button type="submit" class="btn btn-success">Yes</button>
+        </div>
+
+    </form>
+    <form action={{ url_for('default_input') }}>
+             <div class="col-lg-4">
+            <button type="submit" class="btn btn-danger">No</button>
+        </div>
+
+    </form>
+        </div>
+</div>
+
+
+{% endblock %}

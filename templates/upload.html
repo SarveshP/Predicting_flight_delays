@@ -1,0 +1,68 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %} Delay prediction {% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+
+{% block content %}
+ <div class="container">
+  <div class="jumbotron" style="padding-top: 20px; padding-bottom: 0px; ">
+    <center><h2>CS- 5593 Data Mining - Group Project </h2><br>
+    <h3>Group Members</h3>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>1.Sarvesh Prattipati</h3>
+        <h3>3.Sharath Mudhigonda</h3>
+      </div>
+      <div class="col-lg-6">
+        <h3>2.Ram Sharan Tummala</h3>
+        <h3>4. Anand Sai Bodicharla</h3>
+      </div>
+    </div>
+    </center>
+ </div>
+
+     <div style="position:fixed;left:30%">
+        <h2>Slelect the dataset file to upload ?</h2>
+        <h4>
+          <form action="{{ url_for('uploader')}}" method = "POST" enctype = "multipart/form-data">
+            <div class="form-group">
+             <input type="file" name="file_upload"><br>
+              How much percentage do you want to split for Training data?<br><br>
+              Percentage for Training Data: <input type="text" name="trn_smpl"  onchange="checkInput(this);" placeholder="For eg: 80"><br><br>
+              <div id="testing"> </div><br><br>
+              <center><button type="submit" class="btn btn-success">Submit</button></center>
+            </div>
+          </form>
+        </h4>
+      </div>
+      <script type="text/javascript">
+       function checkInput(obj) {
+        console.log(obj.value);
+        x = 100 - obj.value;
+        document.getElementById("testing").innerHTML = "Percentage for Testing Data:  "+  x +"%";
+            }
+     </script>
+
+<!--<div class="container">-->
+    <!--<h1>Flight delay prediction</h1>-->
+    <!--<form action = "{{ url_for('uploader')}}" method = "POST"-->
+         <!--enctype = "multipart/form-data">-->
+        <!--<label> **csv format file only </label>-->
+         <!--<input type = "file" name = "file" />-->
+        <!--<label> How much do you want from this file to be training dataset? enter percentage </label>-->
+         <!--<input type="number" name="trn_smpl" value="80"/>-->
+         <!--<input type = "submit" value="Upload"/>-->
+    <!--</form>-->
+
+    <!--<hr/>-->
+ <!--</div>-->
+
+
+
+
+{% endblock %}
